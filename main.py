@@ -15,8 +15,8 @@ def main() :
            network_password = subprocess.run("netsh wlan show profile name = \"" + network_name +
                          "\" key=clear | find \"Key Content\" ", shell=True,
                           stderr=subprocess.PIPE, stdout=subprocess.PIPE, 
-                          universal_newlines=True).stdout.replace("Key Content            : ","").lstrip()
-           print(network_name + ": " + network_password, end="")
+                          universal_newlines=True).stdout.replace("Key Content            : ","").lstrip().strip("\n")
+           print(network_name + ": " + network_password)
     print(line)
     input("")
 
